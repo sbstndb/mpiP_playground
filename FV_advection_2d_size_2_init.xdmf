@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Xdmf>
+	<Domain>
+		<Grid GridType="Collection" CollectionType="Spatial">
+			<Grid Name="mesh_rank_0" Rank="0">
+				<Topology TopologyType="Quadrilateral" NumberOfElements="26021">
+					<DataItem Dimensions="104084" Format="HDF">FV_advection_2d_size_2_init.h5:/mesh/rank_0/connectivity</DataItem>
+				</Topology>
+				<Geometry GeometryType="XYZ">
+					<DataItem Dimensions="82905" Format="HDF">FV_advection_2d_size_2_init.h5:/mesh/rank_0/points</DataItem>
+				</Geometry>
+				<Attribute Name="u" Center="Cell">
+					<DataItem Dimensions="26021" Format="HDF">FV_advection_2d_size_2_init.h5:/mesh/rank_0/fields/u</DataItem>
+				</Attribute>
+			</Grid>
+			<Grid Name="mesh_rank_1" Rank="1">
+				<Topology TopologyType="Quadrilateral" NumberOfElements="1013">
+					<DataItem Dimensions="4052" Format="HDF">FV_advection_2d_size_2_init.h5:/mesh/rank_1/connectivity</DataItem>
+				</Topology>
+				<Geometry GeometryType="XYZ">
+					<DataItem Dimensions="3597" Format="HDF">FV_advection_2d_size_2_init.h5:/mesh/rank_1/points</DataItem>
+				</Geometry>
+				<Attribute Name="u" Center="Cell">
+					<DataItem Dimensions="1013" Format="HDF">FV_advection_2d_size_2_init.h5:/mesh/rank_1/fields/u</DataItem>
+				</Attribute>
+			</Grid>
+		</Grid>
+	</Domain>
+</Xdmf>

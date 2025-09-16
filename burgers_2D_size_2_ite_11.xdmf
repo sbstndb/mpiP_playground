@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Xdmf>
+	<Domain>
+		<Grid GridType="Collection" CollectionType="Spatial">
+			<Grid Name="mesh_rank_0" Rank="0">
+				<Topology TopologyType="Quadrilateral" NumberOfElements="32">
+					<DataItem Dimensions="128" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_0/connectivity</DataItem>
+				</Topology>
+				<Geometry GeometryType="XYZ">
+					<DataItem Dimensions="135" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_0/points</DataItem>
+				</Geometry>
+				<Attribute Name="u_0" Center="Cell">
+					<DataItem Dimensions="32" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_0/fields/u_0</DataItem>
+				</Attribute>
+				<Attribute Name="u_1" Center="Cell">
+					<DataItem Dimensions="32" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_0/fields/u_1</DataItem>
+				</Attribute>
+				<Attribute Name="level" Center="Cell">
+					<DataItem Dimensions="32" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_0/fields/level</DataItem>
+				</Attribute>
+			</Grid>
+			<Grid Name="mesh_rank_1" Rank="1">
+				<Topology TopologyType="Quadrilateral" NumberOfElements="32">
+					<DataItem Dimensions="128" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_1/connectivity</DataItem>
+				</Topology>
+				<Geometry GeometryType="XYZ">
+					<DataItem Dimensions="135" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_1/points</DataItem>
+				</Geometry>
+				<Attribute Name="u_0" Center="Cell">
+					<DataItem Dimensions="32" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_1/fields/u_0</DataItem>
+				</Attribute>
+				<Attribute Name="u_1" Center="Cell">
+					<DataItem Dimensions="32" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_1/fields/u_1</DataItem>
+				</Attribute>
+				<Attribute Name="level" Center="Cell">
+					<DataItem Dimensions="32" Format="HDF">burgers_2D_size_2_ite_11.h5:/mesh/rank_1/fields/level</DataItem>
+				</Attribute>
+			</Grid>
+		</Grid>
+	</Domain>
+</Xdmf>
