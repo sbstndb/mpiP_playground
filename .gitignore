@@ -1,0 +1,24 @@
+# Build directories and profiler outputs
+build/
+*.mpiP
+
+# mpiP local build/install artifacts
+third_party/mpiP/install/
+third_party/mpiP/Check.mak
+third_party/mpiP/Defs.mak
+third_party/mpiP/Makefile
+third_party/mpiP/config.log
+third_party/mpiP/config.status
+third_party/mpiP/lookup.c
+third_party/mpiP/mpiP-wrappers.c
+third_party/mpiP/mpiPconfig.h
+third_party/mpiP/mpiPi_def.h
+third_party/mpiP/symbols.h
+third_party/mpiP/mpip_timers/aix_local.h
+third_party/mpiP/mpi.protos.txt
+third_party/mpiP/get_fortran_arg.f
+third_party/mpiP/site.exp
+third_party/mpiP/site.bak
+third_party/mpiP/testing.sum
+third_party/mpiP/testing.log
+third_party/mpiP/testing/Makefile
