@@ -58,6 +58,42 @@ Le binaire `bottleneck` délègue désormais tout le traitement à `src/simple/`
 
 Le projet `nested_bottleneck` (voir `src/nested/`) répartit la logique dans plusieurs fichiers et imbrique plusieurs couches d'appels avant d'atteindre `MPI_Allgather`, `MPI_Allreduce` ou `MPI_Bcast`. Les rapports mpiP présentent une pile encore plus détaillée reliant les fonctions C++ métier à chaque appel MPI. Ajustez `-k` pour conserver la profondeur souhaitée (ex. `-k 4` pour un aperçu compact, `-k 6` pour voir toute la chaîne `nested::detail::* → nested::run_pipeline → main`).
 
+### Script complet (construction + cas de test)
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Répertoire racine du projet
+root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Construction (ou mise à jour) de mpiP
+pushd "$root_dir/third_party/mpiP" >/dev/null
+export CFLAGS='-DPTR=void* -Dsprintf_vma\(buf\,val\)=bfd_sprintf_vma\(abfd\,buf\,val\)'
+./configure --prefix="$PWD/install" CC=mpicc CXX=mpicxx --with-f77=no --with-binutils-dir=/usr
+make -j
+make install
+popd >/dev/null
+
+# Compilation des binaires d'exemple
+cmake -S "$root_dir" -B "$root_dir/build" -DCMAKE_BUILD_TYPE=RelWithDebInfo
+cmake --build "$root_dir/build" -j
+
+# Lancement du cas de test "bottleneck" avec mpiP
+export MPIP="-k 4 -n -x $root_dir/build/bottleneck"
+mpirun -n 4 "$root_dir/build/bottleneck"
+```
+
+### Script samurai + mpiP
+
+Le script `scripts/run_samurai_demo.sh` automatise la construction de `mpiP`, la compilation d'une démo samurai et son exécution instrumentée :
+
+```bash
+./scripts/run_samurai_demo.sh /chemin/vers/samurai finite-volume-advection-2d
+```
+
+Variables optionnelles : `MPI_PROCS` (nombre de processus, défaut : 2) et `MPIP_EXTRA_ARGS` pour compléter la configuration `MPIP`.
+
 ## 5. Profilage d'un projet externe (exemple : samurai)
 
 Lorsque vous souhaitez instrumenter un autre code MPI comme [samurai](https://github.com/hpc-maths/samurai) :
